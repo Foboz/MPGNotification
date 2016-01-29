@@ -179,15 +179,16 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     static const CGFloat kCloseButtonHeight = 30;
     
     CGFloat buttonOriginX = notificationWidth - kButtonOriginXOffset - contentPaddingX;
-    CGFloat closeButtonOriginX = notificationWidth - kCloseButtonOriginXOffset - contentPaddingX;
+    CGFloat closeButtonOriginX = notificationWidth - kCloseButtonOriginXOffset - contentPaddingX + self.closeButtonInsets.left;
     
     CGFloat firstButtonOriginY = (self.secondButton) ? 6 : 17;
     CGFloat buttonHeight = (self.firstButton && self.secondButton) ? 25 : 30;
     CGFloat secondButtonOriginY = firstButtonOriginY + buttonHeight + kButtonPadding;
-    
+    CGFloat closeButtonOriginY = kCloseButtonOriginY + self.closeButtonInsets.top;
+  
     self.firstButton.frame = CGRectMake(buttonOriginX, firstButtonOriginY, kButtonWidthDefault, buttonHeight);
     self.secondButton.frame = CGRectMake(buttonOriginX, secondButtonOriginY, kButtonWidthDefault, buttonHeight);
-    self.closeButton.frame = CGRectMake(closeButtonOriginX, kCloseButtonOriginY, kCloseButtonWidth, kCloseButtonHeight);
+    self.closeButton.frame = CGRectMake(closeButtonOriginX, closeButtonOriginY, kCloseButtonWidth, kCloseButtonHeight);
     
     
     // TITLE LABEL

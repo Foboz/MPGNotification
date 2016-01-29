@@ -68,6 +68,7 @@ typedef MPGNotificationDismissHandler MPGNotificationDismissAnimationHandler;
 @property (nonatomic, readonly) UIButton *firstButton; // to read tag value
 @property (nonatomic, readonly) UIButton *secondButton;  // to read tag value
 @property (nonatomic, readonly) UIButton *closeButton;  // to read tag value
+@property (nonatomic)           UIEdgeInsets closeButtonInsets;
 
 // Properties used for basic styling
 @property (nonatomic, strong) NSString *title; // required
