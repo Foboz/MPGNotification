@@ -117,6 +117,9 @@ typedef MPGNotificationDismissHandler MPGNotificationDismissAnimationHandler;
 // Sets the configuration and titles for the Notification's visible buttons. The number of buttonTitles supplied must match the configuration.
 - (void)setButtonConfiguration:(MPGNotificationButtonConfigration)configuration withButtonTitles:(NSArray *)buttonTitles;
 
+// Add custom close button
+- (void)addCloseButton:(UIButton *)closeButton;
+
 // Shows the notification on screen, optionally with a button handler completion block.
 - (void)show;
 - (void)showWithButtonHandler:(MPGNotificationButtonHandler)completionBlock;

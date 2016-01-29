@@ -513,10 +513,26 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     
 }
 
+- (void)addCloseButton:(UIButton *)closeButton
+{
+    self.buttonConfiguration = MPGNotificationButtonConfigrationCloseButton;
+  
+    NSInteger buttonTag = MPGNotificationButtonConfigrationCloseButton;
+      
+    self.firstButton = nil;
+    self.secondButton = nil;
+  
+    [self.closeButton removeFromSuperview];
+    self.closeButton = nil;
+    self.closeButton = closeButton;
+    self.closeButton.tag = buttonTag;
+    [self setNeedsLayout];
+}
+
 - (void)show {
-    
+  
     [self _showNotification];
-    
+  
 }
 
 - (void)showWithButtonHandler:(MPGNotificationButtonHandler)buttonHandler {
