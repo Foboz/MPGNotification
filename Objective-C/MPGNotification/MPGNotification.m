@@ -524,7 +524,9 @@ static const CGFloat kColorAdjustmentLight = 0.35;
   
     [self.closeButton removeFromSuperview];
     self.closeButton = nil;
+  
     self.closeButton = closeButton;
+    [closeButton addTarget:self action:@selector(_buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     self.closeButton.tag = buttonTag;
     [self setNeedsLayout];
 }
