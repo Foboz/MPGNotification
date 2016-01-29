@@ -179,7 +179,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     static const CGFloat kCloseButtonHeight = 30;
     
     CGFloat buttonOriginX = notificationWidth - kButtonOriginXOffset - contentPaddingX;
-    CGFloat closeButtonOriginX = notificationWidth - kCloseButtonOriginXOffset - contentPaddingX + self.closeButtonInsets.left;
+    CGFloat closeButtonOriginX = notificationWidth - kCloseButtonOriginXOffset - contentPaddingX - self.closeButtonInsets.right;
     
     CGFloat firstButtonOriginY = (self.secondButton) ? 6 : 17;
     CGFloat buttonHeight = (self.firstButton && self.secondButton) ? 25 : 30;
