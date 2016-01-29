@@ -56,6 +56,9 @@ typedef void (^MPGNotificationButtonHandler)(MPGNotification *notification, NSIn
 // Block to handle Notification auto dismiss
 typedef void (^MPGNotificationDismissHandler)(MPGNotification *notification);
 
+// Block to handle Notification dismiss animation
+typedef MPGNotificationDismissHandler MPGNotificationDismissAnimationHandler;
+
 ////////////////////////////////////////////////////////////////////////////////
 
 @interface MPGNotification : UIScrollView <UIScrollViewDelegate, UIDynamicAnimatorDelegate>
@@ -68,6 +71,7 @@ typedef void (^MPGNotificationDismissHandler)(MPGNotification *notification);
 
 // Properties used for basic styling
 @property (nonatomic, strong) NSString *title; // required
+@property (nonatomic, strong) UIFont *titleFont; // optional
 @property (nonatomic, strong) NSString *subtitle; // optional
 @property (nonatomic, strong) UIImage *iconImage; // optional
 @property (nonatomic, strong) UIColor *backgroundColor; // optional
@@ -99,8 +103,11 @@ typedef void (^MPGNotificationDismissHandler)(MPGNotification *notification);
 // Sets the button handler block directly; is also be set indirectly by calling showWithButtonHandler:
 @property (nonatomic, copy) MPGNotificationButtonHandler buttonHandler;
 
-// Sets the dismiss hanlder block directly;
+// Sets the dismiss handler block directly;
 @property (nonatomic, copy) MPGNotificationDismissHandler dismissHandler;
+
+// Sets the dismiss animation handler block directly;
+@property (nonatomic, copy) MPGNotificationDismissAnimationHandler dismissAnimationHandler;
 
 // Convenience initializer class methods (for manual setup, use init)
 + (MPGNotification *)notificationWithTitle:(NSString *)title subtitle:(NSString *)subtitle backgroundColor:(UIColor *)color iconImage:(UIImage *)image;

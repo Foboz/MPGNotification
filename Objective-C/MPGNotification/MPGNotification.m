@@ -342,12 +342,25 @@ static const CGFloat kColorAdjustmentLight = 0.35;
         [self.backgroundView addSubview:self.titleLabel];
         
         self.titleLabel.backgroundColor = [UIColor clearColor];
-        
-        self.titleLabel.font = [UIFont fontWithName:kTitleFontName size:kTitleFontSize];
+      
+        if (self.titleFont) {
+            self.titleLabel.font = self.titleFont;
+        } else {
+            self.titleLabel.font = [UIFont fontWithName:kTitleFontName size:kTitleFontSize];
+        }
+      
     }
     
     self.titleLabel.text = title;
     [self setNeedsLayout];
+}
+
+- (void)setTitleFont:(UIFont *)titleFont
+{
+    _titleFont = titleFont;
+    if (_titleLabel) {
+        _titleLabel.font = titleFont;
+    }
 }
 
 - (void)setSubtitle:(NSString *)subtitle {
@@ -610,6 +623,10 @@ static const CGFloat kColorAdjustmentLight = 0.35;
                 
                 [UIView animateWithDuration:kLinearAnimationTime animations:^{
                     self.contentOffset = CGPointMake(0, CGRectGetHeight(self.bounds));
+                    if (self.dismissAnimationHandler) {
+                        self.dismissAnimationHandler(self);
+                        self.dismissAnimationHandler = nil;
+                    }
                 } completion:^(BOOL finished){
                     [self _destroyNotification];
                 }];
