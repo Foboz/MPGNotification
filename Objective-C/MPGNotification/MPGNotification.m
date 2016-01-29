@@ -195,9 +195,9 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     
     static const CGFloat kTitleLabelHeight = 20;
     
-    CGFloat textPaddingX = (self.iconImage) ? CGRectGetMaxX(self.iconImageView.frame) + kPaddingX : contentPaddingX + kPaddingX + 5;
+    CGFloat textPaddingX = (self.iconImage) ? CGRectGetMaxX(self.iconImageView.frame) + kPaddingX : contentPaddingX + kPaddingX + 5 + self.titleInsets.left;
     CGFloat textTrailingX = (self.firstButton) ? CGRectGetWidth(self.bounds) - CGRectGetMinX(self.firstButton.frame) + 9 : contentPaddingX + 20;
-    CGFloat textWidth = notificationWidth - (textPaddingX + textTrailingX);
+    CGFloat textWidth = notificationWidth - (textPaddingX + textTrailingX + self.titleInsets.right);
     
     // expected subtitle calculations
     static const CGFloat kSubtitleHeight = 50;
@@ -223,8 +223,8 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     BOOL subtitleEmpty = (self.subtitle == nil || self.subtitle.length == 0);
     BOOL subtitleOneLiner = (expectedSubtitleSize.height < 25 && subtitleEmpty == NO);
     
-    CGFloat titleLabelPaddingY = (subtitleEmpty) ? 18 : (subtitleOneLiner) ? 13 : 3;
-    
+    CGFloat titleLabelPaddingY = (subtitleEmpty) ? 18 : (subtitleOneLiner) ? 13 : 3 + self.titleInsets.top;
+  
     self.titleLabel.frame = CGRectMake(textPaddingX,
                                        titleLabelPaddingY,
                                        textWidth,

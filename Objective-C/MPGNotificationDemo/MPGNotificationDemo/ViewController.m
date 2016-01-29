@@ -66,6 +66,7 @@
     [notification setButtonConfiguration:buttonArray.count withButtonTitles:buttonArray];
     notification.duration = 2.0;
     notification.swipeToDismissEnabled = NO;
+    notification.titleInsets = UIEdgeInsetsMake(10.0, 10.0, 0.0, 0.0);
     
     __weak typeof(self) weakSelf = self;
     [notification setDismissHandler:^(MPGNotification *notification) {
